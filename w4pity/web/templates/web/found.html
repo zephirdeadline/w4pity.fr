@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+
+{% block content %}
+    {% load static %}
+
+    <!-- Page Header -->
+    <header class="masthead" style="background-image: url('{% static 'img/home-bg.jpg'%}')">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-10 mx-auto">
+                    <div class="site-heading">
+                        <h1>{{ site.title }}</h1>
+                        <span class="subheading">{{ site.subTitle }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <form class="form-inline md-form form-sm" method="get" action="/found#list">
+            <i class="fa fa-search" aria-hidden="true"></i>
+            <input class="form-control w-50 ml-3" type="text" name="search" placeholder="Search" aria-label="Search">
+        </form>
+        <hr>
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs nav-justified">
+            <li class="nav-item">
+                <a class="nav-link active" data-toggle="tab" href="#panel1" role="tab">({{ posts.count }}) Found in Tips/Tutorials</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#panel2" role="tab">({{ projects.count }}) Found in My projects</a>
+            </li>
+        </ul>
+        <!-- Tab panels -->
+
+        <div id="list" class="tab-content card">
+            <!--Panel 1-->
+            <div class="tab-pane fade in show active" id="panel1" role="tabpanel">
+                <br>
+                <div class="row">
+                    <div class="col-lg-8 col-md-10 mx-auto">
+                        {% for p in posts %}
+                            <div class="post-preview">
+                                <a href="{% url "post" p.id%}">
+                                    <h2 class="post-title">
+                                        {{ p.title }}
+                                    </h2>
+                                    <h3 class="post-subtitle">
+                                        {{ p.subTitle }}
+                                    </h3>
+                                </a>
+                                <p class="post-meta">Posted by
+                                    <a href="#">{{ site.pseudo }}</a>
+                                    {{ p.date }}</p>
+                            </div>
+                            <hr>
+                        {% endfor %}
+                        <!-- Pager -->
+                        <div class="clearfix">
+                            <a class="btn btn-primary float-right" href="#">More tips/tutorials &rarr;</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--/.Panel 1-->
+            <!--Panel 2-->
+            <div class="tab-pane fade" id="panel2" role="tabpanel">
+                <br>
+                <div class="row">
+                    <div class="col-lg-8 col-md-10 mx-auto">
+
+                        {% for p in projects %}
+                            <div class="post-preview">
+                                <a href="{% url "post" p.id%}">
+                                    <h2 class="post-title">
+                                        {{ p.title }}
+                                    </h2>
+                                    <h3 class="post-subtitle">
+                                        {{ p.subTitle }}
+                                    </h3>
+                                </a>
+                                <p class="post-meta">Posted by
+                                    <a href="#">{{ site.pseudo }}</a>
+                                    {{ p.date }}</p>
+                            </div>
+                            <hr>
+                        {% endfor %}
+                        <!-- Pager -->
+                    </div>
+                </div>
+            </div>
+            <!--/.Panel 2-->
+        </div>
+    </div>
+    <hr>
+
+{% endblock %}
