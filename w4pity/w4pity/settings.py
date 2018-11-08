@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '-+=ea2f4f6(s5*kog&g@-0xf&t_p86ukh06huc&pn715sw9o7r'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['www.w4pity.fr', 'w4pity.fr']
 
@@ -81,11 +81,7 @@ DATABASES = {
     }
 }
 
-EMAIL_USE_TLS = True
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'w4pity@gmail.com'
-EMAIL_HOST_PASSWORD = 'Krafty11'
-EMAIL_PORT = 587
+
 
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
